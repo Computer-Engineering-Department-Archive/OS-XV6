@@ -548,3 +548,10 @@ welc(void)
   cprintf("%s\n", message);
   return 0;
 }
+
+// recieve number of system ticks
+int
+recticks(void)
+{
+  return ticks;
+}

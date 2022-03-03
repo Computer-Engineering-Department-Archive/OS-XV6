@@ -96,3 +96,10 @@ sys_welc(void)
 {
   return welc();
 }
+
+// recives the number of ticks
+int
+sys_recticks(void)
+{
+  return recticks();
+}
