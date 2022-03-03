@@ -25,6 +25,7 @@ int sleep(int);
 int uptime(void);
 int welc(void);
 int recticks(void);
+int procinfo(void);
 
 // ulib.c
 int stat(const char*, struct stat*);

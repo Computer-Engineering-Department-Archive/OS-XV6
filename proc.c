@@ -86,8 +86,11 @@ allocproc(void)
   return 0;
 
 found:
+  // Set process state and pid
   p->state = EMBRYO;
   p->pid = nextpid++;
+  // Set process clocl
+  p->ctime = ticks;
 
   release(&ptable.lock);
 
@@ -554,4 +557,21 @@ int
 recticks(void)
 {
   return ticks;
+}
+
+// Iterate through process and display RUNNING process pid, time
+int
+procinfo(void)
+{
+  struct proc *p;
+
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if(p->state == RUNNING) {
+      cprintf("%d    %d\n", p->pid, p->ctime);
+    }
+  }
+
+  release(&ptable.lock);
+  return 0;
 }

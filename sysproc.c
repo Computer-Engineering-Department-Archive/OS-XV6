@@ -103,3 +103,8 @@ sys_recticks(void)
 {
   return recticks();
 }
+
+int sys_procinfo(void)
+{
+  return procinfo();
+}

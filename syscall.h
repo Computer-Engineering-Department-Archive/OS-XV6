@@ -22,3 +22,4 @@
 #define SYS_close  21
 #define SYS_welc   22
 #define SYS_recticks 23
+#define SYS_procinfo 24
