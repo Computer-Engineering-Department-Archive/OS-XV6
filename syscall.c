@@ -103,9 +103,9 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
-extern int sys_welc(void);
-extern int sys_recticks(void);
-extern int sys_procinfo(void);
+extern int sys_thread_create(void);
+extern int sys_thread_join(void);
+extern int sys_thread_id(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -129,9 +129,9 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
-[SYS_welc]    sys_welc,
-[SYS_recticks] sys_recticks,
-[SYS_procinfo] sys_procinfo,
+[SYS_thread_create] sys_thread_create,
+[SYS_thread_join] sys_thread_join,
+[SYS_thread_id] sys_thread_id,
 };
 
 void

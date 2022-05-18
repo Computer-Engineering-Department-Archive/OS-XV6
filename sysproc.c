@@ -7,6 +7,7 @@
 #include "mmu.h"
 #include "proc.h"
 
+
 int
 sys_fork(void)
 {
@@ -90,21 +91,28 @@ sys_uptime(void)
   return xticks;
 }
 
-// prints a welcome message in console
 int
-sys_welc(void)
-{
-  return welc();
+sys_thread_create(void)
+{  
+  int stackptr = 0;
+  if(argint(0, &stackptr) < 0)
+    return -1;
+  return thread_create((void *)stackptr);
 }
 
-// recives the number of ticks
 int
-sys_recticks(void)
+sys_thread_join(void)
 {
-  return recticks();
+  int id;
+  if (argint(0,&id) < 0)
+  {
+    return -1;
+  }
+  
+  return thread_join(id);
 }
 
-int sys_procinfo(void)
-{
-  return procinfo();
+int
+sys_thread_id(void){
+  return thread_id();
 }
