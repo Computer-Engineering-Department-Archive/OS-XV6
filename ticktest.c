@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    printf(1, "%d\n", recticks());
+    printf(1, "%d\n", uptime());
     printf(1, "successful\n");
     exit();
 }

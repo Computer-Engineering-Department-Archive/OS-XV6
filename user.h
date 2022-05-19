@@ -23,6 +23,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int date(struct rtcdate *);
 int thread_create(void *);
 int thread_join(int);
 int thread_id(void);

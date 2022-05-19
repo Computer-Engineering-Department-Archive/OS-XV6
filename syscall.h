@@ -23,3 +23,4 @@
 #define SYS_thread_create 22
 #define SYS_thread_join 23
 #define SYS_thread_id 24
+#define SYS_date 25

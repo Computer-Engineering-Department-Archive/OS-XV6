@@ -181,7 +181,10 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
-	_threadTest\
+	_date\
+	_ticktest\
+	_threadtest\
+	_matrixtest\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -254,7 +257,10 @@ EXTRA=\
 	printf.c umalloc.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
-	_threadTest.c\
+	_date.c\
+	_ticktest.c\
+	_threadtest.c\
+	_matrixtest.c\
 
 dist:
 	rm -rf dist
