@@ -184,7 +184,8 @@ UPROGS=\
 	_date\
 	_ticktest\
 	_threadtest\
-	_matrixtest\
+	_matrixsum\
+	_producerconsumer\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -260,7 +261,8 @@ EXTRA=\
 	_date.c\
 	_ticktest.c\
 	_threadtest.c\
-	_matrixtest.c\
+	_matrixsum.c\
+	_producerconsumer.c\
 
 dist:
 	rm -rf dist
