@@ -23,10 +23,16 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int date(struct rtcdate *);
-int thread_create(void *);
-int thread_join(int);
-int thread_id(void);
+int setSchadulerStrategy(int value);
+int getTerminateTime(int pid);
+int getTurnaroundTime(int pid);
+int getPriority(int pid);
+int getWaitingTime(int pid);
+int getburstTime(int pid);
+int getEnteringTime(int pid);
+int consolePrint(char* msg);
+int setPriority(int priority);
+
 
 // ulib.c
 int stat(const char*, struct stat*);
@@ -41,4 +47,3 @@ void* memset(void*, int, uint);
 void* malloc(uint);
 void free(void*);
 int atoi(const char*);
-int thread_creator(void (*fn) (void *), void *arg);

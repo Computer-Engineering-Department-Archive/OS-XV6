@@ -1,3 +1,6 @@
+extern int schedulerStrategy;
+
+
 // Per-CPU state
 struct cpu {
   uchar apicid;                // Local APIC ID
@@ -36,14 +39,12 @@ enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 // Per-process state
 struct proc {
-  int childThreads;                
-  int stackTop;
-  int status;                  // 0 for unit threads and 1 for task threads
   uint sz;                     // Size of process memory (bytes)
   pde_t* pgdir;                // Page table
   char *kstack;                // Bottom of kernel stack for this process
   enum procstate state;        // Process state
   int pid;                     // Process ID
+  int immortalPid;
   struct proc *parent;         // Parent process
   struct trapframe *tf;        // Trap frame for current syscall
   struct context *context;     // swtch() here to run process
@@ -52,6 +53,13 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+  int enteringTime;
+  int terminateTime;
+  int waitingTime;
+  int turnAroundTime;
+  int burstTime;
+  int burstHop;
+  int priority;
 };
 
 // Process memory is laid out contiguously, low addresses first:

@@ -7,7 +7,6 @@
 #include "mmu.h"
 #include "proc.h"
 
-
 int
 sys_fork(void)
 {
@@ -91,38 +90,76 @@ sys_uptime(void)
   return xticks;
 }
 
+
+
+int
+sys_setSchadulerStrategy(void)
+{
+  int value;
+  if ((argint(0, &value)) < 0)
+    return -1;
+  return setSchadulerStrategy(value);  
+}
+
+int
+sys_getTurnaroundTime(void)
+{
+    int pid;
+    if(argint(0, &pid) < 0)
+      return -1;
+  return getTurnaroundTime(pid);
+}
+
+int
+sys_getWaitingTime(void)
+{     
+    int pid;
+    if(argint(0, &pid) < 0)
+      return -1;
+  return getWaitingTime(pid);
+}
+
+
+int
+sys_getburstTime(void)
+{
+    int pid;
+    if(argint(0, &pid) < 0)
+      return -1;
+  return getCBTime(pid);
+}
+
 int 
-sys_date(void)
+sys_getTerminateTime(void){
+    int pid;
+    if(argint(0, &pid) < 0)
+      return -1;
+  return getTerminateTime(pid);
+}
+
+int 
+sys_getEnteringTime(void){
+    int pid;
+    if(argint(0, &pid) < 0)
+      return -1;
+  return getEnteringTime(pid);
+}
+
+int
+sys_setPriority(void)
 {
-  struct rtcdate *r;
-  if(argptr(0, (void*)&r, sizeof(r)) < 0)
+  int priority;
+  if ((argint(0, &priority)) < 0)
     return -1;
-  cmostime(r);
-  return 0;
+  return setPriority(priority);  
 }
 
-int
-sys_thread_create(void)
-{  
-  int stackptr = 0;
-  if(argint(0, &stackptr) < 0)
-    return -1;
-  return thread_create((void *)stackptr);
+int 
+sys_getPriority(void){
+    int pid;
+    if((argint(0, &pid)) < 0)
+      return -1;
+    return getProcessPriority(pid);
 }
 
-int
-sys_thread_join(void)
-{
-  int id;
-  if (argint(0,&id) < 0)
-  {
-    return -1;
-  }
-  
-  return thread_join(id);
-}
 
-int
-sys_thread_id(void){
-  return thread_id();
-}

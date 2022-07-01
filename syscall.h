@@ -20,7 +20,12 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
-#define SYS_thread_create 22
-#define SYS_thread_join 23
-#define SYS_thread_id 24
-#define SYS_date 25
+#define SYS_setSchadulerStrategy 22
+#define SYS_getTurnaroundTime 23
+#define SYS_getWaitingTime 24
+#define SYS_getburstTime 25
+#define SYS_getTerminateTime 26
+#define SYS_setPriority 27
+#define SYS_getEnteringTime 28
+#define SYS_getPriority 29
+
